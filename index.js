@@ -399,7 +399,7 @@ function sendMessage() {
         // 욕 관련 대답
         if (containsSwearWord) {
             setTimeout(function() {
-                displayMessage("응 꺼져~", false); 
+                displayMessage('<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSIjzKI_utslPZokAuJvtmes29lmjMD3mXfQ&s" alt="angry image" width="200"><br>응 꺼져~ ', false); 
             }, 1000); 
         } else {
             setTimeout(function() {
