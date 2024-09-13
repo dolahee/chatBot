@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_v9hl8bHNSc2VkftVikOr_fPfB41Fn_0pcg&s">
+    <title>봇이랑 이야기하기</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="chatContainer">
+        <div class="header">현재날씨: <span></span></div> 
+        <div class="chatBox" id="chatBox">
+            <div class="chatLog" id="chatLog"></div>
+        </div>
+        <div class="chatInput">
+            <div class="menu" id="menu">
+                <button id="menuBtn">☰</button>
+                <div class="menuContent">
+                    <button class="menuItem" data-text="현재 날씨에 따른 노래 추천받기">현재 날씨에 따른 노래 추천받기</button>
+                    <button class="menuItem" data-text="도희봇의 메뉴 추천 받기">도희봇의 메뉴 추천 받기</button>
+                </div>
+            </div>
+            <input type="text" id="userInput" placeholder="메시지를 입력해 주세요" />
+            <button id="sendBtn">전송</button>
+        </div>
+        
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
