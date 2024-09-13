@@ -183,7 +183,44 @@ const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(randomFo
 callback(`오늘은 <span class="food"> ${randomFood} </span> 어떠세요?<br><br>
     <a href="${searchUrl}" target="_blank" class="randomFood"> ☞ ${randomFood} 만드는 법 알아보기</a>`);
 }
-// 메뉴 선택 버튼을 표시하는 함수
+// 메뉴 버튼 이벤트 
+document.getElementById('menuBtn').addEventListener('click', function () {
+    const menu = document.querySelector('.menu');
+    menu.classList.toggle('show');
+});
+
+document.querySelectorAll('.menuItem').forEach(button => {
+    button.removeEventListener('click', handleMenuClick);
+    button.addEventListener('click', handleMenuClick); 
+});
+
+// 메뉴 클릭
+function handleMenuClick() {
+    const menu = document.querySelector('.menu');
+    menu.classList.remove('show');
+    const menuText = this.getAttribute('data-text');
+
+    displayMessage(menuText, true);
+
+    if (menuText === "현재 날씨에 따른 노래 추천받기") {
+
+        setTimeout(() => {
+            recommendMusic(displayMessage, true);
+        }, 1000);
+    } else if (menuText === "도희봇의 메뉴 추천 받기") {
+
+        setTimeout(() => {
+            showCuisineOptions(displayMessage);
+        }, 1000);
+    } else {
+
+        const userInput = document.getElementById('userInput');
+        userInput.value = menuText;
+        sendMessage();
+    }
+}
+
+// 메뉴 선택 버튼을 표시하는 함수 (음식 메뉴 추천)
 function showCuisineOptions(callback) {
     const cuisineOptions = `
         <button class="cuisineBtn" data-cuisine="japan">일식</button>
@@ -196,7 +233,10 @@ function showCuisineOptions(callback) {
 
     setTimeout(() => {
         document.querySelectorAll('.cuisineBtn').forEach(button => {
-            button.addEventListener('click', function () {
+            const newButton = button.cloneNode(true); 
+            button.replaceWith(newButton); 
+
+            newButton.addEventListener('click', function () {
                 const selectedCuisine = this.dataset.cuisine;
                 displayMessage(this.textContent, true);
                 setTimeout(() => {
@@ -206,6 +246,8 @@ function showCuisineOptions(callback) {
         });
     }, 100);
 }
+
+
 // 채팅 봇의 응답을 생성하는 함수
 function generateBotResponse(userMessage) {
     const responses = {
@@ -329,32 +371,6 @@ function sendMessage() {
         }, 1000);
     }
 }
-
-// 메뉴 버튼 및 이벤트 설정
-document.getElementById('menuBtn').addEventListener('click', function() {
-    const menu = document.querySelector('.menu');
-    menu.classList.toggle('show');
-});
-
-document.querySelectorAll('.menuItem').forEach(button => {
-    button.addEventListener('click', function() {
-        const menu = document.querySelector('.menu');
-        menu.classList.remove('show');
-
-        const menuText = this.getAttribute('data-text');
-        displayMessage(menuText, true); 
-
-        if (menuText === "현재 날씨에 따른 노래 추천받기") {
-            setTimeout(() => {
-                recommendMusic(displayMessage, true);
-            }, 1000);
-        } else {
-            const userInput = document.getElementById('userInput');
-            userInput.value = menuText;
-            sendMessage();
-        }
-    });
-});
 
 
 // 전송 버튼 및 입력란 이벤트 처리
