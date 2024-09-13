@@ -298,14 +298,34 @@ function generateBotResponse(userMessage) {
         },
     };
 
-    const learnedResponses = JSON.parse(localStorage.getItem('learnedResponses')) || {};
-    let finalResponse = "뭐라는지 모르겠어요. 저를 학습시키려면 '학습:키워드:응답' 형식으로 입력해 주세요.";
 
-    for (let key in learnedResponses) {
-        if (userMessage.includes(key)) {
-            finalResponse = learnedResponses[key];
+    // 욕설 필터링 배열
+    var swear_words_arr = new Array(
+        "시발", "씨발", "씨빨", "씨바", "씨팔", "씨이발", "씨입발", "씨입팔", "씨이빨",
+        "새끼", "샊기", "쌔끼", "쎄끼", "썅", "썌끼", "쌍년", "쌍놈", "좆", "좃", "조까", "좇", "좃까", 
+        "좆까", "좇까", "개새끼", "개샊기", "개쉐끼", "개섀끼", "개쉑", "개자식", "개자지", "개잡놈", 
+        "미친놈", "미친년", "병신", "븅신", "ㅄ", "ㅂㅅ", "빙신", "멍청이", "등신", "대가리", 
+        "느금", "느그엄마", "느금마", "뒤질래", "죽을래", "닥쳐", "닥치라", "닥치고", "꺼져", "꺼지라",
+        "엿먹어", "엿이나먹어", "엿먹어라", "지랄", "지럴", "지롤", "지뢀", "지랄맞네", "지랄하네",
+        "미친", "미친놈", "미친년", "호로새끼", "호로자식", "호로새끼", "후장", "후장따먹", "후장뚫어",
+        "좆같은", "좆나", "존나", "존망", "존못", "존내", "존귀", "존잼", "존맛", "존싫", "존트", "존멋", 
+        "씨팍", "씨발놈", "씨방새", "씨펄", "쉑스", "쉐끼", "섀끼", "씹", "씹새끼", "씹년", "씹놈", "씹새", 
+        "씹창", "씹탱", "씹할", "씹치", "씹물", "씹보지", "씹자지", "씹할년", "애미", "애비", "애미뒤진",
+        "니미", "니앰", "니애미", "니애비", "너거애미", "엄마좆까", "할매보지", "할매자지", "뒈져", 
+        "죽어", "뒤져", "디져라", "뒈지라", "디졌네", "뒤진놈", "후장", "항문", "항문쑤셔"
+    );
+    
+    
+    // 욕설을 포함하면 반환되는 메시지
+    for (let i = 0; i < swear_words_arr.length; i++) {
+        if (userMessage.includes(swear_words_arr[i])) {
+            displayMessage("응 꺼져~");
+            return;  
         }
     }
+
+    // 일반적인 답변 처리
+    let finalResponse = "뭐라는지 모르겠어요. 저를 학습시키려면 '학습:키워드:응답' 형식으로 입력해 주세요.";
 
     for (let key in responses) {
         if (userMessage.includes(key)) {
@@ -318,22 +338,8 @@ function generateBotResponse(userMessage) {
         }
     }
 
-    if (userMessage.startsWith('학습:')) {
-        const parts = userMessage.split(':');
-        if (parts.length === 3) {
-            const keyword = parts[1].trim();
-            const response = parts[2].trim();
-            learnedResponses[keyword] = response;
-            localStorage.setItem('learnedResponses', JSON.stringify(learnedResponses));
-            finalResponse = `배웠어요! "${keyword}"에 대해 이렇게 답할게요: "${response}"`;
-        } else {
-            finalResponse = "학습시키려면 '학습:키워드:응답' 형식으로 입력해 주세요.";
-        }
-    }
-
     displayMessage(finalResponse);
 }
-
 // 메시지를 화면에 표시하는 함수
 function displayMessage(message, isUser = false) {
     const chatLog = document.getElementById('chatLog');
