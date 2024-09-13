@@ -336,21 +336,26 @@ document.getElementById('menuBtn').addEventListener('click', function() {
     menu.classList.toggle('show');
 });
 
-// 각 메뉴 항목 클릭 시 이벤트 처리
 document.querySelectorAll('.menuItem').forEach(button => {
     button.addEventListener('click', function() {
         const menu = document.querySelector('.menu');
         menu.classList.remove('show');
 
-        if (this.getAttribute('data-text') === "현재 날씨에 따른 노래 추천받기") {
-            recommendMusic(displayMessage, true);
+        const menuText = this.getAttribute('data-text');
+        displayMessage(menuText, true); 
+
+        if (menuText === "현재 날씨에 따른 노래 추천받기") {
+            setTimeout(() => {
+                recommendMusic(displayMessage, true);
+            }, 1000);
         } else {
             const userInput = document.getElementById('userInput');
-            userInput.value = this.getAttribute('data-text');
-            sendMessage(); 
+            userInput.value = menuText;
+            sendMessage();
         }
     });
 });
+
 
 // 전송 버튼 및 입력란 이벤트 처리
 document.getElementById('sendBtn').addEventListener('click', sendMessage);
