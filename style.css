@@ -44,6 +44,7 @@ a { color: #000; font-size: 14px; text-decoration: none;}
 .chatContainer .chatBox .chatLog .botMessage .food span{color: #000; font-weight: 100; font-size: 15px;}
 .chatContainer .chatBox .chatLog .botMessage .cuisineBtn{margin-top: 10px; border: 1px solid #ff1493; background-color: #fff; border-radius: 5px; padding: 3px 10px; font-size: 13px; color: #000;}
 .chatContainer .chatBox .chatLog .botMessage .randomFood{margin-top: 5px;}
+.chatContainer .chatBox .chatLog .botMessage .close{border: 1px solid #ff1493; background-color: #fff; border-radius: 5px; padding: 3px 10px; font-size: 13px; color: #000;}
 .chatContainer .chatBox .chatLog .messageLabel {font-size: 12px; margin-bottom: 2px;  font-weight: bold;}
 .chatContainer .chatBox .chatLog .userLabel {  align-self: flex-end;  color: #ff1493;}
 .chatContainer .chatBox .chatLog .botLabel { align-self: flex-start;color: #000;}
