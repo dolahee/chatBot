@@ -15,7 +15,8 @@ function getWeather(callback, temperatureOnly = false) {
         "mist": "안개가 껴있고",
         "overcast clouds": "흐림",
         "light rain": "이슬비가 오고",
-        "moderate rain" : "비가 오고"
+        "moderate rain" : "비가 오고",
+        "heavy intensity rain" :"비가 많이 오고"
     };
 
     const weatherTranslations2 = {
@@ -30,7 +31,8 @@ function getWeather(callback, temperatureOnly = false) {
         "mist": "🌫️",
         "overcast clouds": "☁️",
         "light rain": "☔",
-        "moderate rain" : "☔"
+        "moderate rain" : "☔",
+        "heavy intensity rain" :"☔"
     };
 
     fetch(apiUrl)
@@ -88,7 +90,8 @@ function recommendMusic(callback, useWeatherBasedQuery = false) {
             "mist": "안개 낀 날에 어울리는 노래",
             "overcast clouds": "흐린 날에 어울리는 노래",
             "light rain": "비오는 날에 어울리는 노래",
-            "moderate rain" : "비오는 날에 어울리는 노래"
+            "moderate rain" : "비오는 날에 어울리는 노래",
+            "heavy intensity rain" :"비오는 날에 어울리는 노래"
         };
         searchQuery = weatherToMusic[currentWeather] || searchQuery;
     }
