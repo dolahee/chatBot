@@ -218,6 +218,9 @@ function handleMenuClick() {
         setTimeout(() => {
             showCuisineOptions(displayMessage);
         }, 1000);
+    }else if (menuText === "나가기") {
+        window.close();
+      
     } else {
 
         const userInput = document.getElementById('userInput');
