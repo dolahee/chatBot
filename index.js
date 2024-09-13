@@ -4,17 +4,18 @@ function getWeather(callback, temperatureOnly = false) {
     const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=Seoul&appid=${apiKey}&units=metric`;
 
     const weatherTranslations = {
-        "clear sky": "맑은",
-        "few clouds": "구름 조금",
-        "scattered clouds": "흩어진 구름",
-        "broken clouds": "조각 구름",
-        "shower rain": "소나기",
-        "rain": "비",
-        "thunderstorm": "천둥번개",
-        "snow": "눈",
-        "mist": "안개",
+        "clear sky": "맑으며",
+        "few clouds": "구름 조금 껴있고",
+        "scattered clouds": "구름이 조금 껴있고",
+        "broken clouds": "조각 구름이 껴있고",
+        "shower rain": "소나기가 내리고",
+        "rain": "비가 오고",
+        "thunderstorm": "천둥번개가 치며",
+        "snow": "눈이 오고",
+        "mist": "안개가 껴있고",
         "overcast clouds": "흐림",
-        "light rain": "이슬비"
+        "light rain": "이슬비가 오고",
+        "moderate rain" : "비가 오고"
     };
 
     const weatherTranslations2 = {
@@ -28,7 +29,8 @@ function getWeather(callback, temperatureOnly = false) {
         "snow": "❄️",
         "mist": "🌫️",
         "overcast clouds": "☁️",
-        "light rain": "☔"
+        "light rain": "☔",
+        "moderate rain" : "☔"
     };
 
     fetch(apiUrl)
@@ -86,6 +88,7 @@ function recommendMusic(callback, useWeatherBasedQuery = false) {
             "mist": "안개 낀 날에 어울리는 노래",
             "overcast clouds": "흐린 날에 어울리는 노래",
             "light rain": "비오는 날에 어울리는 노래",
+            "moderate rain" : "비오는 날에 어울리는 노래"
         };
         searchQuery = weatherToMusic[currentWeather] || searchQuery;
     }
