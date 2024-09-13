@@ -271,6 +271,7 @@ function generateBotResponse(userMessage) {
 
     const responses = {
         "안녕": "안녕~",
+        "이름":"내 이름은 도희, 봇이죠",
         "ㅎㅇ": "ㅎㅇ",
         "잘 지내?": "응 잘 지내고 있어",
         "이름이 뭐야?": "나는 도희야",
