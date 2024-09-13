@@ -84,6 +84,8 @@ function recommendMusic(callback, useWeatherBasedQuery = false) {
             "thunderstorm": "천둥번개 칠 때 듣기 좋은 노래",
             "snow": "눈 오는 날에 어울리는 노래",
             "mist": "안개 낀 날에 어울리는 노래",
+            "overcast clouds": "흐린 날에 어울리는 노래",
+            "light rain": "비오는 날에 어울리는 노래",
         };
         searchQuery = weatherToMusic[currentWeather] || searchQuery;
     }
