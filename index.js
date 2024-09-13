@@ -294,7 +294,7 @@ function generateBotResponse(userMessage) {
         },
         "온도": function(callback) {
             getWeather(callback, true);
-        },
+        }, 
         "노래 추천": function(callback) {
             recommendMusic(callback);
         },
@@ -343,6 +343,7 @@ function generateBotResponse(userMessage) {
         "좋다" : "그럼 3333-03-3368530 카카오뱅크 박도희 입금해 줄래?",
         "먹을게" : "그럼 3333-03-3368530 카카오뱅크 박도희 입금해 줄래?",
         "그래" : "그래 그래 잘 됐다",
+        "ㅂㅇ":'야 가기 전에 이 버튼 한 번만 눌러 봐 <br> <br> <button id="close" class="close" onclick="closeWindow()">누르기</button>'
     };
 
     const learnedResponses = JSON.parse(localStorage.getItem('learnedResponses')) || {};
@@ -448,3 +449,7 @@ document.getElementById('userInput').addEventListener('keydown', function(event)
         sendMessage();
     }
 });
+function closeWindow() {
+
+    window.close();
+}
