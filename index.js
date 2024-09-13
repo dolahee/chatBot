@@ -301,16 +301,16 @@ function generateBotResponse(userMessage) {
             showCuisineOptions(callback);
         },
         "음식": function(callback) { 
-            food(callback);
+            recommendFood(callback);
         },
         "메뉴": function(callback) { 
-            food(callback);
+            recommendFood(callback);
         },
         "뭐 먹지": function(callback) { 
-            food(callback);
+            recommendFood(callback);
         },
         "뭐 먹을까": function(callback) { 
-            food(callback);
+            recommendFood(callback);
         },
     };
 
