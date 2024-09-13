@@ -43,7 +43,7 @@ function getWeather(callback, temperatureOnly = false) {
             const weatherEmoji = weatherTranslations2[weatherDescriptionEnglish] || '';
             const temperature = data.main.temp;
 
-            const weatherMessage = `현재 서울의 날씨는 ${weatherDescription}, 온도는 ${temperature}°C 입니다.`;
+            const weatherMessage = `지금 날씨는 ${weatherDescription}, 온도는 ${temperature}°C 이럼.`;
 
             const headerWeatherSpan = document.querySelector('.header span');
             headerWeatherSpan.textContent = `${weatherEmoji}`;
@@ -51,7 +51,7 @@ function getWeather(callback, temperatureOnly = false) {
 
             if (callback) {
                 if (temperatureOnly) {
-                    callback(`현재 서울의 온도는 ${temperature}°C 입니다.`);
+                    callback(`지금 온도는 ${temperature}°C 임.`);
                 } else {
                     callback(weatherMessage);
                 }
@@ -109,7 +109,7 @@ function recommendMusic(callback, useWeatherBasedQuery = false) {
                 const videoUrl = `https://www.youtube.com/watch?v=${videoId}`;
                 
                 const message = `
-                    이 노래는 어떠세요?<br> ${videoTitle}<br>
+                    이 노래 어떰? <br> ${videoTitle}<br>
                     <a href="${videoUrl}" target="_blank">☞ 클릭 하면 유튜브 채널로 이동 합니다</a><br>
                     <iframe width="100%" height="315" src="https://www.youtube.com/embed/${videoId}" 
                     frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -186,7 +186,7 @@ const selectedCuisine = foodLists[cuisine] || foodLists.all;
 const randomFood = getRandomItemFromList(selectedCuisine);
 const searchUrl = `https://www.google.com/search?q=${encodeURIComponent(randomFood)}+만드는+법`;
 
-callback(`오늘은 <span class="food"> ${randomFood} </span> 어떠세요?<br><br>
+callback(`오늘은 <span class="food"> ${randomFood} </span> ㄱㄱ <br><br>
     <a href="${searchUrl}" target="_blank" class="randomFood"> ☞ ${randomFood} 만드는 법 알아보기</a>`);
 }
 // 메뉴 버튼 이벤트 
@@ -235,7 +235,7 @@ function showCuisineOptions(callback) {
         <button class="cuisineBtn" data-cuisine="all">랜덤</button>
     `;
 
-    callback(`어떤 음식을 원하시나요?<br>${cuisineOptions}`);
+    callback(`뭐 먹을래?<br>${cuisineOptions}`);
 
     setTimeout(() => {
         document.querySelectorAll('.cuisineBtn').forEach(button => {
@@ -270,11 +270,14 @@ var swear_words_arr = ["시발", "씨발", "씨빨", "씨바", "씨팔", "씨이
 function generateBotResponse(userMessage) {
 
     const responses = {
-        "안녕": "안녕하세요! 만나서 반가워요.",
-        "잘 지내?": "네, 잘 지내고 있어요. 당신은요?",
-        "이름이 뭐야?": "저는 채팅 봇이에요. 당신의 이름은 무엇인가요?",
-        "무슨 일을 해?": "저는 여러분과 대화를 나누는 일을 하고 있어요.",
-        "고마워": "천만에요! 도움이 되어 기뻐요.",
+        "안녕": "안녕~",
+        "ㅎㅇ": "ㅎㅇ",
+        "잘 지내?": "응 잘 지내고 있어",
+        "이름이 뭐야?": "나는 도희야",
+        "무슨 일을 해?": "오늘의 날씨, 노래, 음식 추천을 해 주고 있어.",
+        "고마워": "고마우면 3333-03-3368530 카카오뱅크 박도희 입금해 줄래?",
+        "감사": "고마우면 3333-03-3368530 카카오뱅크 박도희 입금해 줄래?",
+        "ㄳ": "고마우면 3333-03-3368530 카카오뱅크 박도희 입금해 줄래?",
         "도희": "걔 공주잖아",
         "진웅": "완전 잘생긴 왕자잖아.",
         "진하": "그 왕자의 동생... 신이 되고 싶어서 자꾸 하늘에 서려고 하지",
@@ -315,7 +318,7 @@ function generateBotResponse(userMessage) {
     };
 
     const learnedResponses = JSON.parse(localStorage.getItem('learnedResponses')) || {};
-    let finalResponse = "뭐라는지 모르겠어요. 저를 학습시키려면 '학습:키워드:응답' 형식으로 입력해 주세요.";
+    let finalResponse = "뭐라는겨? 학습시키려면 '학습:키워드:응답' 형식으로 입력 ㄱㄱ";
 
     for (let key in learnedResponses) {
         if (userMessage.includes(key)) {
@@ -341,9 +344,9 @@ function generateBotResponse(userMessage) {
             const response = parts[2].trim();
             learnedResponses[keyword] = response;
             localStorage.setItem('learnedResponses', JSON.stringify(learnedResponses));
-            finalResponse = `배웠어요! "${keyword}"에 대해 이렇게 답할게요: "${response}"`;
+            finalResponse = `ㅇㅋ "${keyword}"에 대해 앞으로 "${response}" 이렇게 기억함 `;
         } else {
-            finalResponse = "학습시키려면 '학습:키워드:응답' 형식으로 입력해 주세요.";
+            finalResponse = "뭐라는겨? 학습시키려면 '학습:키워드:응답' 형식으로 입력 ㄱㄱ";
         }
     }
 
