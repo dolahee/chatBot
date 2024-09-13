@@ -60,7 +60,7 @@ a { color: #000; font-size: 14px; text-decoration: none;}
 .chatContainer .chatInput .menu { position: relative;}
 .chatContainer .chatInput .menu #menuBtn {padding: 16px;  background-color: #ffb6e2;  color: #000;  border: none;  cursor: pointer;  width: auto;}
 .chatContainer .chatInput .menu #menuBtn:hover {   background-color: #ffb6e2;}
-.chatContainer .chatInput .menu .menuContent {  display: none;  position: absolute; top: -76px; left: 0; background-color: rgb(228, 228, 228); z-index: 1; overflow: hidden; width: 400px;}
+.chatContainer .chatInput .menu .menuContent {  display: none;  position: absolute; top: -114px; left: 0; background-color: rgb(228, 228, 228); z-index: 1; overflow: hidden; width: 400px;}
 .chatContainer .chatInput .menu .menuContent .menuItem { padding: 10px 15px; background-color: #ffe4f4; color: black; border: none; width: 100%; text-align: left; cursor: pointer;}
 .chatContainer .chatInput .menu .menuContent .menuItem:hover {background-color: #f1f1f1;}
 .chatContainer .chatInput .menu.show .menuContent { display: block;}
